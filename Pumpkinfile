@@ -6,12 +6,12 @@ resource "src-git": {
 
 resource "gitops-git": {
   type: "git"
-  param url: "https://github.com/your-user/cicd-hello-world-gitops"
+  param url: "https://github.com/gpaul/cicd-hello-world-gitops"
 }
 
 resource "docker-image": {
   type: "image"
-  param url: "your-user/hello-world:$(context.build.name)"
+  param url: "gpaul/hello-world:$(context.build.name)"
   param digest: "$(inputs.resources.docker-image.digest)"
 }
 
@@ -62,7 +62,7 @@ task "deploy": {
       workingDir: "/workspace/gitops-git"
       args: [
         "-git-revision=$(context.git.commit)",
-        "-substitute=imageName=your-user/hello-world@$(inputs.resources.docker-image.digest)"
+        "-substitute=imageName=gpaul/hello-world@$(inputs.resources.docker-image.digest)"
       ]
     }
   ]
