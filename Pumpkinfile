@@ -61,6 +61,7 @@ task "deploy": {
       image: "mesosphere/update-gitops-repo:v1.0"
       workingDir: "/workspace/gitops-git"
       args: [
+        "-verbose",
         "-git-revision=$(context.git.commit)",
         "-substitute=imageName=gpaul/hello-world@$(inputs.resources.docker-image.digest)"
       ]
