@@ -58,7 +58,4 @@ func hello(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Build time: %s\n", Buildtime)
 	fmt.Fprintf(w, "This change will trigger a build!\n")
 }
-
-
-
 // [END all]
