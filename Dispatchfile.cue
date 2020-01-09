@@ -1,4 +1,4 @@
-resource "src-git": {
+rresource "src-git": {
   type: "git"
   param url: "$(context.git.url)"
   param revision: "$(context.git.commit)"
