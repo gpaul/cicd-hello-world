@@ -1,4 +1,4 @@
-resource "src-git": {
+esource "src-git": {
   type: "git"
   param url: "$(context.git.url)"
   param revision: "$(context.git.commit)"
@@ -33,7 +33,7 @@ task "build": {
   outputs: ["docker-image"]
   deps: ["test"]
 
-  steps: [
+  steps: 
     {
       name: "build-and-push"
       image: "chhsiao/kaniko-executor"
