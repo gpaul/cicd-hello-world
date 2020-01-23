@@ -82,6 +82,7 @@ task "slow-success": {
 }
 
 task "quick-failure": {
+  deps: ["slow-success"]
   steps: [
     {
       name: "quick-failure"
