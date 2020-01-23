@@ -28,32 +28,6 @@ task "test": {
   ]
 }
 
-task "slow-success": {
-  inputs: ["src-git"]
-
-  steps: [
-    {
-      name: "test"
-      image: "golang:1.13.0-buster"
-      command: [ "sleep", "60" ]
-      workingDir: "/workspace/src-git"
-    }
-  ]
-}
-
-task "quick-fail": {
-  inputs: ["src-git"]
-
-  steps: [
-    {
-      name: "test"
-      image: "golang:1.13.0-buster"
-      command: [ "false" ]
-      workingDir: "/workspace/src-git"
-    }
-  ]
-}
-
 task "build": {
   inputs: ["src-git"]
   outputs: ["docker-image"]
@@ -102,7 +76,7 @@ actions: [
     on push branches: ["master"]
   },
   {
-    tasks: ["build", "slow-success", "quick-fail"]
+    tasks: ["build"]
     on pull_request chatops: ["build"]
   },
   {
