@@ -70,13 +70,23 @@ task "deploy": {
   ]
 }
 
+task "slow-success": {
+  steps: [
+    {
+      name: "slow-success"
+      image: "golang:1.13.0-buster"
+      command: [ "sleep", "120" ]
+    }
+  ]
+}
+
 actions: [
   {
     tasks: ["build", "deploy"]
     on push branches: ["master"]
   },
   {
-    tasks: ["build"]
+    tasks: ["build", "slow-success"]
     on pull_request chatops: ["build"]
   },
   {
