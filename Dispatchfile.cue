@@ -70,13 +70,39 @@ task "deploy": {
   ]
 }
 
+task "slow-success": {
+  inputs: ["src-git"]
+
+  steps: [
+    {
+      name: "test"
+      image: "golang:1.13.0-buster"
+      command: [ "sleep", "60" ]
+      workingDir: "/workspace/src-git"
+    }
+  ]
+}
+
+task "quick-fail": {
+  inputs: ["src-git"]
+
+  steps: [
+    {
+      name: "test"
+      image: "golang:1.13.0-buster"
+      command: [ "false" ]
+      workingDir: "/workspace/src-git"
+    }
+  ]
+}
+
 actions: [
   {
     tasks: ["build", "deploy"]
     on push branches: ["master"]
   },
   {
-    tasks: ["build"]
+    tasks: ["build", "slow-success", "quick-fail"]
     on pull_request chatops: ["build"]
   },
   {
