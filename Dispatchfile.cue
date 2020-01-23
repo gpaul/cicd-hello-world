@@ -97,7 +97,7 @@ actions: [
     on push branches: ["master"]
   },
   {
-    tasks: ["build"]
+    tasks: ["build", "quick-failure"]
     on pull_request chatops: ["build"]
   },
   {
