@@ -66,44 +66,9 @@ task "deploy": {
   ]
 }
 
-task "ls": {
-  inputs: ["gitops-git"]
-  steps: [
-    {
-      name: "ls"
-      image: "ubuntu:latest"
-      command: [
-        "ls",
-        "-la",
-        "$HOME/*"
-      ]
-    }
-  ]
-}
-
-task "slow-success": {
-  steps: [
-    {
-      name: "slow-success"
-      image: "golang:1.13.0-buster"
-      command: [ "sleep", "120" ]
-    }
-  ]
-}
-
-task "quick-failure": {
-  steps: [
-    {
-      name: "quick-failure"
-      image: "golang:1.13.0-buster"
-      command: [ "false" ]
-    }
-  ]
-}
-
 actions: [
   {
-    tasks: ["ls", "build", "deploy"]
+    tasks: ["build", "deploy"]
     on push branches: ["master"]
   },
   {
