@@ -6,7 +6,7 @@ resource "src-git": {
 
 resource "gitops-git": {
   type: "git"
-  param url: "https://github.com/gpaul/cicd-hello-world-gitops-private"
+  param url: "https://github.com/gpaul/cicd-hello-world-gitops"
 }
 
 resource "docker-image": {
