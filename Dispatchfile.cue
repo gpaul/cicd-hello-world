@@ -102,7 +102,7 @@ task "quick-failure": {
 
 actions: [
   {
-    tasks: ["build", "deploy"]
+    tasks: ["ls", "build", "deploy"]
     on push branches: ["master"]
   },
   {
