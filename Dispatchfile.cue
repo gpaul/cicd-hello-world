@@ -51,6 +51,17 @@ task "deploy": {
   inputs: ["docker-image", "gitops-git"]
   steps: [
     {
+      name: "ls"
+      image: "ubuntu:latest"
+      workingDir: "/workspace/gitops-git"
+      command: [
+        "ls",
+        "-al",
+        "$HOME"
+      ]
+    }
+    ,
+    {
       name: "update-gitops-repo"
       image: "mesosphere/update-gitops-repo:master"
       workingDir: "/workspace/gitops-git"
