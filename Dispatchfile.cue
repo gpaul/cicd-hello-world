@@ -65,12 +65,11 @@ task "deploy": {
 }
 
 task "ls": {
-  inputs: ["docker-image", "gitops-git"]
+  inputs: ["gitops-git"]
   steps: [
     {
       name: "ls"
       image: "ubuntu:latest"
-      workingDir: "/workspace/gitops-git"
       command: [
         "ls",
         "-la",
