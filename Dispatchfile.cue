@@ -28,6 +28,7 @@ task "test": {
   ]
 }
 
+
 task "build": {
   inputs: ["src-git"]
   outputs: ["docker-image"]
