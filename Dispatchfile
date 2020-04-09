@@ -58,7 +58,8 @@ task "deploy": {
         "-verbose",
         "-git-revision=$(context.git.commit)",
         "-force-push",
-        "-substitute=imageName=gpaul/hello-world@$(inputs.resources.docker-image.digest)"
+        "-substitute=imageName=gpaul/hello-world@$(inputs.resources.docker-image.digest)",
+        "-template-path=$(context.git.branch)/**.yaml.tmpl"
       ]
     }
   ]
@@ -66,8 +67,12 @@ task "deploy": {
 
 actions: [
   {
-    tasks: ["build", "deploy"]
+    tasks: ["build"]
     on push branches: ["master"]
+  },
+  {
+    tasks: ["build", "deploy"]
+    on push branches: ["staging", "production"]
   },
   {
     tasks: ["build"]
