@@ -6,7 +6,7 @@ resource "src-git": {
 
 resource "gitops-git": {
   type: "git"
-  param url: "https://github.com/gpaul/cicd-hello-world-gitops"
+  param url: "https://gitlab.com/gustav.paul/cicd-hello-world-gitops.git"
 }
 
 resource "docker-image": {
@@ -59,6 +59,7 @@ task "deploy": {
         "-git-revision=$(context.git.commit)",
         "-force-push",
         "-substitute=imageName=gpaul/hello-world@$(inputs.resources.docker-image.digest)",
+        "-scm-provider=gitlab",
       ]
     }
   ]
