@@ -67,7 +67,7 @@ task "deploy": {
 
 actions: [
   {
-    tasks: ["build"]
+    tasks: ["build", "deploy"]
     on push branches: ["master"]
   },
   {
