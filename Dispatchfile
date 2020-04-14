@@ -59,7 +59,6 @@ task "deploy": {
         "-git-revision=$(context.git.commit)",
         "-force-push",
         "-substitute=imageName=gpaul/hello-world@$(inputs.resources.docker-image.digest)",
-        "-filepath=$(context.git.branch)/**.yaml.tmpl"
       ]
     }
   ]
