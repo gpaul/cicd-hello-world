@@ -52,7 +52,7 @@ task "deploy": {
   steps: [
     {
       name: "update-gitops-repo"
-      image: "mesosphere/update-gitops-repo:master"
+      image: "gpaul/update-gitops-repo:v1.1"
       workingDir: "/workspace/gitops-git"
       args: [
         "-verbose",
