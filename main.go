@@ -40,6 +40,7 @@ func main() {
 		port = fromEnv
 	}
 
+	
 	// register hello function to handle all requests
 	server := http.NewServeMux()
 	server.HandleFunc("/", hello)
